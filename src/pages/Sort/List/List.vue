@@ -1,22 +1,20 @@
 <template>
   <div id="listContainer">
-      <div class="content" v-for="(item, index) in sortListData" :key="index">
-          <!-- <div v-if="item.id == id"> -->
-            <div class="top">
-              <img :src="sortNavData.categoryL1List[index].bannerUrl" alt="">
-            </div>
-            <div class="bottom">
-              <ul>
-                <li v-for="(item, index) in sortListData.categoryList" :key="index">
-                  <div class="image">
-                    <img :src="sortListData.categoryList[index].wapBannerUrl" alt="">
-                  </div>
-                  <div class="text">{{sortListData.categoryList[index].name}}</div>
-                </li>
-              </ul>
-            </div>
-          <!-- </div> -->
+    <div class="container" v-for="(item, index) in sortListData" :key="index">
+      <div class="top">
+        <img src="../../../common/images/Home/swiper01.webp" alt="">
       </div>
+      <div class="bottom">
+        <ul>
+          <li v-for="(itemList, index) in item.categoryList || item.subCateList" :key="index">
+            <div class="image">
+              <img :src="itemList.wapBannerUrl" alt="">
+            </div>
+            <div class="text">{{itemList.name}}</div>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -26,10 +24,17 @@ import {mapState} from "vuex"
     async mounted(){
       this.$store.dispatch("getSortNavDataAction");
       this.$store.dispatch("getSortListDataAction");
+
+      this.sortNavData = this.sortListData.find(item=> item.id===this.$route.params.id*1);
+    },
+    watch:{
+      $route(){
+        this.sortNavData = this.sortListData.find(item=> item.id===this.$route.params.id*1);
+      }
     },
     computed:{
       ...mapState({
-        sortNavData: state => state.sortNavData,
+        // sortNavData: state => state.sortNavData,
         sortListData: state => state.sortListData
       }),
       ...mapState({
@@ -44,9 +49,9 @@ import {mapState} from "vuex"
   width 588px
   height 1148px
   padding 30px 30px 21px
-  overflow hidden
   position relative
-  .content
+  .container
+    display flex
     flex-direction column
     width 528px
     position absolute
@@ -61,15 +66,20 @@ import {mapState} from "vuex"
         height 100%
     .bottom
       width 528px
+      position relative
       ul
         display flex
         flex-wrap wrap
         width 528px
         box-sizing border-box
+        position absolute
+        left 0
+        top 0
         li
           width 144px
           height 216px
-          margin-right 32px
+          margin-right 30px
+          list-style none
           .image
             width 144px
             height 144px

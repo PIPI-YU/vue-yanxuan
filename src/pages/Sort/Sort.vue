@@ -12,15 +12,18 @@
       <div class="left">
         <div class="BScroll">
           <ul>
-            <li class="item" v-for="(item, index) in sortNavData.categoryL1List" :key="index" @click="findId(item.id)">{{sortNavData.categoryL1List[index].name}}</li>
+            <li v-for="(item, index) in sortNavData.categoryL1List" :key="index">
+              <router-link :to="`/sort/list/${item.id}`" class="item">
+                {{item.name}}
+              </router-link>
+            </li>
           </ul>
         </div>
       </div>
       <div class="right">
-        
+        <router-view></router-view>
       </div>
     </div>
-    <router-view></router-view>
   </div>
 </template>
 
@@ -30,25 +33,27 @@
   export default {
     async mounted(){
       this.$store.dispatch("getSortNavDataAction");
+      if(this.sortNavData.categoryL1List){
+        this.$router.push(`/sort/list/${this.sortNavData.categoryL1List[0].id}`);
+      }
 
       //better-scroll
       new BScroll(".BScroll",{
-        scrollX:true
+        scrollX:true,
+        mouseWheel: true,
+        click: true,
+        taps: true
       });
     },
     methods:{
       goSearch(path){
         this.$router.push(path)
-      },
-      findId(id){
-        this.$router.replace("/sort/item/"+id);
-        this.$store.state.id = this.$route.params.id;
-      }
+      } 
     },
     computed:{
       ...mapState({
-        sortNavData: state => state.sortNavData,
-        sortListData: state => state.sortListData
+        sortNavData: state => state.sortNavData
+        // sortListData: state => state.sortListData
       }),
     }
   }
@@ -116,6 +121,8 @@
             margin-bottom 40px
             .item
               color #333
+              width 162px
+              height 50px 
           .active
             color #ab2b2b
             border-left 6px solid #ab2b2b

@@ -5,4 +5,6 @@ export default{
     sortNavData:{},  //分类左侧
     sortListData:[], //分类右侧
     id:11,
+    worthNavData:{},  
+    worthPoolData:{},
 }

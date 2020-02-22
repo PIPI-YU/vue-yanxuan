@@ -101,7 +101,7 @@
           display flex
           flex-wrap wrap
           width 720px
-          margin 0 -30px -32px 0
+          margin 0 30px 32px 30px
           .listItem
             display block
             font-size 24px
@@ -111,6 +111,10 @@
             padding 0 15px
             border 1px solid #999
             border-radius 4px
+            box-sizing border-box
+          .listItem:first-child
+            color #dd1a21
+            border 1px solid #dd1a21
     .mask
       width 750px
       height 811px

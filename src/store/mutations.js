@@ -3,6 +3,8 @@ import {
     SAVE_INDEXDATA,
     SAVE_SORTNAVDATA,
     SAVE_SORTLISTDATA,
+    SAVE_WORTHNAVDATA,
+    SAVE_WORTHPOOLDATA
 } from "./mutations-typs"
 
 export default{
@@ -20,5 +22,13 @@ export default{
 
     [SAVE_SORTLISTDATA] (state,sortListData){
         state.sortListData = sortListData
+    },
+
+    [SAVE_WORTHNAVDATA] (state,worthNavData){
+        state.worthNavData = worthNavData
+    },
+
+    [SAVE_WORTHPOOLDATA] (state,worthPoolData){
+        state.worthPoolData = worthPoolData
     }
 }

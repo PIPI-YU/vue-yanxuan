@@ -6,6 +6,18 @@ export const getSearchData = ()=>ajax({
     url:"/foo/xhr/search/init.json"
 })
 
+//值得买nav接口
+export const getWorthNavData = ()=>ajax({
+    url:"/foo/topic/v1/know/navWap.json"
+})
+
+//值得买瀑布流接口
+export const getWorthPoolData = ()=>ajax({
+    url:"/foo/topic/v1/find/recManual.json"
+})
+
+//----------------------------------------
+
 //主页数据接口
 export const getIndexData = ()=>ajax({
     url:"/api/getIndexData"
