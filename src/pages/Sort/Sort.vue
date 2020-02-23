@@ -33,9 +33,11 @@
   export default {
     async mounted(){
       this.$store.dispatch("getSortNavDataAction");
-      if(this.sortNavData.categoryL1List){
-        this.$router.push(`/sort/list/${this.sortNavData.categoryL1List[0].id}`);
-      }
+      this.$router.replace("/sort/list/11");
+      // if(this.sortNavData.categoryL1List){
+      //   this.$router.push(`/sort/list/${this.sortNavData.categoryL1List[0].id}`);
+      // }
+      
 
       //better-scroll
       new BScroll(".BScroll",{
@@ -62,7 +64,7 @@
 <style lang="stylus" rel="stylesheet/stylus">
 #sortContainer
   width 750px
-  height 1334px
+  height 100%
   position relative
   .head
     display flex

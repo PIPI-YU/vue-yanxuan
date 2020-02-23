@@ -2,9 +2,9 @@
   <div id="listContainer">
     <div class="container" v-for="(item, index) in sortListData" :key="index">
       <div class="top">
-        <img src="../../../common/images/Home/swiper01.webp" alt="">
+        <img src="../../../common/images/Sort/top.png" alt="">
       </div>
-      <div class="bottom">
+      <div class="bottom" v-if="item.id==id">
         <ul>
           <li v-for="(itemList, index) in item.categoryList || item.subCateList" :key="index">
             <div class="image">
@@ -22,14 +22,16 @@
 import {mapState} from "vuex"
   export default {
     async mounted(){
-      this.$store.dispatch("getSortNavDataAction");
+      // this.$store.dispatch("getSortNavDataAction");
       this.$store.dispatch("getSortListDataAction");
 
       this.sortNavData = this.sortListData.find(item=> item.id===this.$route.params.id*1);
+      this.$store.state.id = this.$route.params.id;
     },
     watch:{
       $route(){
         this.sortNavData = this.sortListData.find(item=> item.id===this.$route.params.id*1);
+        this.$store.state.id = this.$route.params.id;
       }
     },
     computed:{
@@ -46,14 +48,21 @@ import {mapState} from "vuex"
 
 <style lang="stylus" rel="stylesheet/stylus">
 #listContainer
+  display block
   width 588px
   height 1148px
   padding 30px 30px 21px
-  position relative
+  position fixed
+  left 162px
+  top 88px
+  // position absolute
+  // left 162px
+  // top 0
   .container
     display flex
     flex-direction column
     width 528px
+    height 1050px
     position absolute
     left 30px
     top 30px

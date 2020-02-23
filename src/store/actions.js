@@ -43,7 +43,6 @@ export default{
 
     async getWorthNavDataAction ({commit}){
         let result = await getWorthNavData();
-        console.log(result);
         if(result.code === '200'){
             commit(SAVE_WORTHNAVDATA,result.data);
         }

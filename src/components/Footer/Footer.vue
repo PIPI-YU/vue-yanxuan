@@ -1,19 +1,34 @@
 <template>
   <div id="footerContainer">
 		<div @click="goPath('/home')" class="footerItem">
-			<span>首页</span>
+			<div class="icon">
+				<i class="iconfont icon-zhuye"></i>
+				<div class="text">首页</div>
+			</div>
 		</div>
 		<div @click="goPath('/sort')" class="footerItem">
-			<span>分类</span>
+			<div class="icon">
+				<i class="iconfont icon-guizi"></i>
+				<div class="text">分类</div>
+			</div>
 		</div>
 		<div @click="goPath('/worth')" class="footerItem">
-			<span>值得买</span>
+			<div class="icon">
+				<i class="iconfont icon-zhidemai2"></i>
+				<div class="text">值得买</div>
+			</div>
 		</div>
 		<div @click="goPath('/cart')" class="footerItem">
-			<span>购物车</span>
+			<div class="icon">
+				<i class="iconfont icon-qicheqianlian-"></i>
+				<div class="text">购物车</div>
+			</div>
 		</div>
 		<div @click="goPath('/personal')" class="footerItem">
-			<span>个人</span>
+			<div class="icon">
+				<i class="iconfont icon-profile"></i>
+				<div class="text">个人</div>
+			</div>
 		</div>
   </div>
 </template>
@@ -42,4 +57,16 @@
     height 100%
     text-align center
     line-height 100%
+	color #666
+	.icon
+		height 64px
+		font-size 40px
+		.iconfont
+			width 40px
+			height 40px
+		.text 
+			height 24px
+			line-height 24px
+			font-size 24px
+			margin 20px 0 0
 </style>
