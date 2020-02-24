@@ -27,6 +27,7 @@ import {mapState} from "vuex"
 
       this.sortNavData = this.sortListData.find(item=> item.id===this.$route.params.id*1);
       this.$store.state.id = this.$route.params.id;
+
     },
     watch:{
       $route(){
@@ -51,13 +52,10 @@ import {mapState} from "vuex"
   display block
   width 588px
   height 1148px
-  padding 30px 30px 21px
-  position fixed
+  position absolute
   left 162px
-  top 88px
-  // position absolute
-  // left 162px
-  // top 0
+  top 0
+  overflow hidden
   .container
     display flex
     flex-direction column

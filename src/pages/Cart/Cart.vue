@@ -1,12 +1,12 @@
 <template>
   <div id="cartContainer">
     <!-- 头部 -->
-    <div class="header">
+    <div class="cartHeader">
       <span class="leftTxt">购物车</span>
       <span class="rightTxt">领券</span>
     </div>
     <!-- 主要内容 -->
-    <div class="content">
+    <div class="cartContent">
       <div class="server">
         <ul>
           <li>
@@ -24,7 +24,7 @@
         <div class="cartBg"></div>
         <div class="loginBtn">
           <span>去添加点什么吧</span>
-          <router-link to="profile"><div class="login">登录</div></router-link>
+          <div class="login" @click="goPersonal('/personal')">登录</div>
         </div>
       </div>
     </div>
@@ -33,6 +33,11 @@
 
 <script>
 export default {
+  methods:{
+    goPersonal(path){
+      this.$router.push(path);
+    }
+  }
 }
 </script>
 
@@ -40,7 +45,7 @@ export default {
 #cartContainer
   width 100%
   // 头部
-  .header
+  .cartHeader
     display flex
     justify-content space-between
     width 100%
@@ -56,7 +61,7 @@ export default {
       font-size 30px
       color red
   // 主要内容
-  .content
+  .cartContent
     width 100%
     .server
       width 100%

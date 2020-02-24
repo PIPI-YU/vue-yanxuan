@@ -1,6 +1,6 @@
 <template>
   <div id="sortContainer">
-    <div class="head">
+    <div class="sortHead">
       <div @click="goSearch('/search')" class="headContent">
         <div class="input">
           <i class="iconfont icon-fangdajing1"></i>
@@ -8,7 +8,7 @@
         </div>
       </div>
     </div>
-    <div class="content">
+    <div class="sortContent">
       <div class="left">
         <div class="BScroll">
           <ul>
@@ -41,7 +41,7 @@
 
       //better-scroll
       new BScroll(".BScroll",{
-        scrollX:true,
+        scrollY:true,
         mouseWheel: true,
         click: true,
         taps: true
@@ -66,7 +66,7 @@
   width 750px
   height 100%
   position relative
-  .head
+  .sortHead
     display flex
     vertical-align middle
     width 750px
@@ -95,7 +95,7 @@
           width 28px
           height 28px
           margin-right 10px
-  .content
+  .sortContent
     display flex
     width 750px
     height 1148px

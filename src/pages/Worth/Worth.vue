@@ -1,18 +1,18 @@
 <template>
   <div id="worthContainer"  v-if="worthPoolData">
-      <div class="head">
+      <div class="worthHead">
         <div class="header">
           <div class="left">
-            <i class="iconfont icon-zhuye"></i>
+            <i class="iconfont icon-zhuye" @click="goHome('/home')"></i>
           </div>
           <div class="center">值得买</div>
           <div class="right">
-            <i class="iconfont icon-fangdajing1"></i>
-            <i class="iconfont icon-qicheqianlian-"></i>
+            <i class="iconfont icon-fangdajing1" @click="goSearch('/search')"></i>
+            <i class="iconfont icon-qicheqianlian-" @click="goCart('/cart')"></i>
           </div>
         </div>
       </div>
-      <div class="nav">
+      <div class="worthNav">
         <div class="navTop">
           <img class="worth" src="../../common/images/Worth/worth.png" alt="">
           <div class="navText">严选好物 用心生活</div>
@@ -121,7 +121,8 @@
           </div>
         </div>
       </div>
-      <div class="worth-content" v-for="(itemPage, index) in worthPoolData" :key="index">
+      <div class="space"></div>
+      <div class="worthContent" v-for="(itemPage, index) in worthPoolData" :key="index">
         <div class="page" v-if="itemPage.ad">
           <div class="ad"><img class="ad-image" :src="itemPage.ad.picUrl" alt=""></div>
           <div class="topics">
@@ -133,7 +134,7 @@
                   <img class="avatar" :src="item.avatar" alt="">
                   <div class="topic-nickname">{{item.nickname}}</div>
                 </div>
-                <div class="bottomRight">90k</div>
+                <div class="bottomRight">90K</div>
               </div>
             </div>
           </div>
@@ -166,7 +167,18 @@
       ...mapState({
         worthNavData: state => state.worthNavData,
         worthPoolData: state => state.worthPoolData
-      }),
+      })
+    },
+    methods:{
+      goHome(path){
+        this.$router.push(path)
+      },
+      goSearch(path){
+        this.$router.push(path)
+      },
+      goCart(path){
+        this.$router.push(path)
+      } 
     }
   }
 </script>
@@ -177,7 +189,7 @@
   height 100%
   background #eee
   box-sizing border-box
-  .head
+  .worthHead
     width 750px
     height 100px
     position fixed
@@ -218,10 +230,10 @@
           display block
           font-size 42px
           margin-right 41px
-  .nav
+  .worthNav
     width 750px
     height 685px
-    margin-bottom 45px
+    // margin-bottom 45px
     position absolute
     left 0
     top 100px
@@ -229,6 +241,7 @@
     background-repeat norepeat
     background-size 750px 685px
     background-position 0 0
+    background-color #eee
     .navTop
       display flex
       width 750px
@@ -286,25 +299,33 @@
                 font-size 24px
                 margin 2px 0 0
                 color #999
-  .worth-content
+  .space
+    width 750px
+    height 30px
+    background #eee
+    position absolute
+    left 0
+    top 780px
+  .worthContent
     width 750px
     background #eee
     box-sizing border-box
     position absolute
     left 0
     top 810px
+    overflow hidden
     .page
       width 750px
-      margin 0 20px
+      margin 0 10px
       box-sizing border-box
       columns 2
-      column-gap 20px
+      column-gap 20px!important
       .ad
         width 345px
         height 192px
         border-radius 24px
-        margin-right 0
         font-size 0
+        margin-bottom 20px
         .ad-image
           display block
           width 345px
@@ -326,16 +347,18 @@
             border-radius 24px 24px 0 0
           .topic-title
             width 345px
-            height 90px
+            // height 90px
             line-height 45px
             color #333
             font-size 28px
             padding 18px 16px 0
+            box-sizing border-box
           .topic-bottom
             width 345px
-            height 50px
-            line-height 50px
+            height 80px
+            line-height 80px
             padding 17px 16px 24px
+            box-sizing border-box
             .bottomLeft
               float left
               display flex
