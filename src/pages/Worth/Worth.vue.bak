@@ -286,7 +286,7 @@
                 height 120px
                 margin 0 24px
               .itemText1
-                width 168px
+                widows 168px
                 height 40px
                 text-align center
                 font-weight bold
